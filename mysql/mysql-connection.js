@@ -1,10 +1,12 @@
 import mysql from "mysql2";
+import dotenv from "dotenv";
+dotenv.config();
 
 const db_config = {
-  host: "us-cdbr-east-06.cleardb.net",
-  user: "bcbb941358aa45",
-  database: "heroku_051d91685db6ea0",
-  password: "0c98e5ef",
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  database: process.env.DB_DATABASE,
+  password: process.env.DB_PASSWORD,
 };
 
 const connection = mysql.createPool(db_config);
