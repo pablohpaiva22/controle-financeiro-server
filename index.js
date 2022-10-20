@@ -4,6 +4,7 @@ import express from "express";
 import cors from 'cors'
 import home from './routes/home.js'
 import newuser from './routes/newuser.js'
+import login from './routes/login.js'
 
 const port = process.env.PORT || 3333;
 
@@ -14,6 +15,7 @@ app.use(express.json())
 
 app.use('/', home)
 app.use('/newuser', newuser)
+app.use('/login', login)
 
 app.listen(port, () => {
   console.log(`Server is running at port ${port}`);
