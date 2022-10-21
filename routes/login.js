@@ -6,11 +6,11 @@ const router = express.Router();
 
 router.post("/", (req, res) => {
   if (req.body.user === "") {
-    return res.status(401).send({ msg: "O campo usuário está vazio" });
+    return res.status(401).send({ msg: "O campo 'usuário' está vazio" });
   }
 
   if (req.body.password === "") {
-    return res.status(401).send({ msg: "O campo password está vazio" });
+    return res.status(401).send({ msg: "O campo 'password' está vazio" });
   }
 
   const sql = `SELECT * FROM heroku_051d91685db6ea0.user WHERE name = '${req.body.user}'`;
@@ -25,7 +25,7 @@ router.post("/", (req, res) => {
       }
 
       if (results.length === 0) {
-        return res.status(401).send({ msg: "Esse usuário não existe" });
+        return res.status(401).send({ msg: "Usuário não cadastrado" });
       }
 
       if (req.body.password === results[0].password) {
@@ -33,7 +33,7 @@ router.post("/", (req, res) => {
           {
             id: results[0].id,
             name: results[0].name,
-            email: results[0].email
+            email: results[0].email,
           },
           process.env.JWT_KEY,
           {

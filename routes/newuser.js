@@ -35,12 +35,12 @@ router.post("/", (req, res) => {
     function (err) {
       if (err) {
         if (err.sqlMessage && err.sqlMessage.includes("name")) {
-          res.status(401).send({ msg: "Usuário já existente" });
+          res.status(401).send({ msg: "Usuário ou senha já existentes" });
           return false;
         }
 
         if (err.sqlMessage && err.sqlMessage.includes("email")) {
-          res.status(401).send({ msg: "Email já existente" });
+          res.status(401).send({ msg: "Usuário ou senha já existentes" });
           return false;
         }
 
