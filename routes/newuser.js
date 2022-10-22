@@ -4,6 +4,8 @@ import connection from "../mysql/mysql-connection.js";
 const router = express.Router();
 
 router.post("/", (req, res) => {
+  const pass = req.body.password.toString()
+
   if (req.body.user === "") {
     return res.status(401).send({ msg: "O campo 'usuário' está vazio" });
   }
@@ -24,6 +26,11 @@ router.post("/", (req, res) => {
 
   if (req.body.password !== req.body.passCheck) {
     res.status(401).send({ msg: "As senha não conferem" });
+    return false;
+  }
+
+  if (pass.length < 6) {
+    res.status(401).send({ msg: "O senha deve conter no mínimo 6 caracteres" });
     return false;
   }
 
