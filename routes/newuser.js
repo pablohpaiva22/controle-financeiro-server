@@ -30,7 +30,7 @@ router.post("/", (req, res) => {
   }
 
   if (pass.length < 6) {
-    res.status(401).send({ msg: "O senha deve conter no mínimo 6 caracteres" });
+    res.status(401).send({ msg: "A senha deve conter no mínimo 6 caracteres" });
     return false;
   }
 
