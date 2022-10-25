@@ -10,7 +10,7 @@ router.post("/", (req, res) => {
   }
 
   if (req.body.password === "") {
-    return res.status(401).send({ msg: "O campo 'password' está vazio" });
+    return res.status(401).send({ msg: "O campo 'Senha' está vazio" });
   }
 
   const sql = `SELECT * FROM heroku_051d91685db6ea0.user WHERE email = '${req.body.email}'`;
