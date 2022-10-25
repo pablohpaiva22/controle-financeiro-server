@@ -5,8 +5,8 @@ import jwt from "jsonwebtoken";
 const router = express.Router();
 
 router.post("/", (req, res) => {
-  if (req.body.user === "") {
-    return res.status(401).send({ msg: "O campo 'usuário' está vazio" });
+  if (req.body.email === "") {
+    return res.status(401).send({ msg: "O campo 'E-mail' está vazio" });
   }
 
   if (req.body.password === "") {
@@ -25,7 +25,7 @@ router.post("/", (req, res) => {
       }
 
       if (results.length === 0) {
-        return res.status(401).send({ msg: "Usuário não cadastrado" });
+        return res.status(401).send({ msg: "E-mail não cadastrado" });
       }
 
       if (req.body.password === results[0].password) {
