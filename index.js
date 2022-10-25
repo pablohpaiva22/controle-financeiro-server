@@ -2,10 +2,10 @@ import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
 import cors from 'cors'
-import home from './routes/home.js'
-import newuser from './routes/newuser.js'
-import login from './routes/login.js'
-import getuser from './routes/getuser.js'
+import home from './src/routes/home.js'
+import newuser from './src/routes/newuser.js'
+import login from './src/routes/login.js'
+import getuser from './src/routes/getuser.js'
 
 const port = process.env.PORT || 3333;
 
