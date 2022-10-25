@@ -5,7 +5,7 @@ function jwtAuth(req, res, next) {
     const token = req.headers.authorization.split(' ')[1]
 
     const decode = jwt.verify(token, process.env.JWT_KEY)
-    req.usuario = decode
+    req.user = decode
     next()
   } catch (err) {
     return res.status(401).send({ msg: 'Falha na autentificação - Token inválido'})
