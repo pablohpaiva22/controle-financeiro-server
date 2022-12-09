@@ -33,7 +33,7 @@ router.post("/", (req, res) => {
     res.status(401).send({ msg: "A senha deve conter no mínimo 6 caracteres" });
     return false;
   }
-  const sql = `INSERT INTO new_project.users (name, email, password) VALUES ('${req.body.user}', '${req.body.email}' ,'${req.body.password}')`;
+  const sql = `INSERT INTO new_project_db.users (name, email, password) VALUES ('${req.body.user}', '${req.body.email}' ,'${req.body.password}')`;
 
   connection.query(
     sql,
