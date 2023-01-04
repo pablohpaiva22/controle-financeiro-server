@@ -13,7 +13,7 @@ router.post("/", (req, res) => {
     return res.status(401).send({ msg: "O campo 'Senha' está vazio" });
   }
 
-  const sql = `SELECT * FROM new_project_db.users WHERE email = '${req.body.email}'`;
+  const sql = `SELECT * FROM railway.users WHERE email = '${req.body.email}'`;
 
   connection.query(
     sql,
