@@ -50,7 +50,7 @@ router.post("/", (req, res) => {
           return false;
         }
 
-        res.send(err);
+        res.status(401).send({msg: 'Erro ao acessar o banco de dados'});
         return false;
       }
 
