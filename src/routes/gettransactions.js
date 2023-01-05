@@ -18,9 +18,21 @@ router.get("/", jwtAuth, (req, res) => {
         return false;
       }
 
-      console.log(results);
+      const data = results.map((item) => {
+          const getFullDate = new Date(item.date)
+          const ptBrDate = getFullDate.toLocaleDateString('pt-br')
+          const removeYear = ptBrDate.slice(0, -5)
 
-      res.send(results);
+        return {
+            id: item.id,
+            description: item.description,
+            price: item.price,
+            date: removeYear,
+            id_user: item.id_user
+          }
+      })
+      
+      res.send(data);
     }
   );
 });
