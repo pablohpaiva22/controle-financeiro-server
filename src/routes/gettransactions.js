@@ -22,16 +22,18 @@ router.get("/", jwtAuth, (req, res) => {
         const removeYear = ptBrDate.slice(0, -5);
 
         const formatedPrice = item.price.toString().replace(".", ",");
-        console.log(formatedPrice);
 
         return {
           id: item.id,
           description: item.description,
           price: formatedPrice,
+          type: item.type,
           date: removeYear,
           id_user: item.id_user,
         };
       });
+
+      console.log(data)
 
       res.send(data);
     }
