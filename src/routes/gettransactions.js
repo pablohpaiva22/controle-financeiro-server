@@ -5,8 +5,6 @@ import connection from "../mysql/mysql-connection.js";
 const router = express.Router();
 
 router.get("/", jwtAuth, (req, res) => {
-  console.log(req.user);
-
   const sql = `SELECT * FROM railway.transactions WHERE id_user = ${req.user.id}`;
 
   connection.query(
@@ -19,19 +17,22 @@ router.get("/", jwtAuth, (req, res) => {
       }
 
       const data = results.map((item) => {
-          const getFullDate = new Date(item.date)
-          const ptBrDate = getFullDate.toLocaleDateString('pt-br')
-          const removeYear = ptBrDate.slice(0, -5)
+        const getFullDate = new Date(item.date);
+        const ptBrDate = getFullDate.toLocaleDateString("pt-br");
+        const removeYear = ptBrDate.slice(0, -5);
+
+        const formatedPrice = item.price.toString().replace(".", ",");
+        console.log(formatedPrice);
 
         return {
-            id: item.id,
-            description: item.description,
-            price: item.price,
-            date: removeYear,
-            id_user: item.id_user
-          }
-      })
-      
+          id: item.id,
+          description: item.description,
+          price: formatedPrice,
+          date: removeYear,
+          id_user: item.id_user,
+        };
+      });
+
       res.send(data);
     }
   );
