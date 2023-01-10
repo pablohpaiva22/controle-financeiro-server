@@ -19,14 +19,16 @@ router.get("/", jwtAuth, (req, res) => {
       const data = results.map((item) => {
         const getFullDate = new Date(item.date);
         const ptBrDate = getFullDate.toLocaleDateString("pt-br");
-        const removeYear = ptBrDate.slice(0, -5);
+        const formattedDate = ptBrDate.slice(0, -5);
+
+        const formattedPrice = item.price.replace('.', ',')
 
         return {
           id: item.id,
           description: item.description,
-          price: item.price,
+          price: formattedPrice,
           type: item.type,
-          date: removeYear,
+          date: formattedDate,
           id_user: item.id_user,
         };
       });
