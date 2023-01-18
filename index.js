@@ -8,6 +8,7 @@ import login from './src/routes/login.js'
 import getuser from './src/routes/getuser.js'
 import gettransactions from './src/routes/gettransactions.js'
 import newtransaction from './src/routes/newtransaction.js'
+import deletetransaction from './src/routes/deletetransaction.js'
 
 const port = process.env.PORT || 3333;
 
@@ -22,6 +23,7 @@ app.use('/login', login)
 app.use('/getuser', getuser)
 app.use('/gettransactions', gettransactions)
 app.use('/newtransaction', newtransaction)
+app.use('/deletetransaction', deletetransaction)
 
 app.listen(port, () => {
   console.log(`Server is running at port ${port}`);
